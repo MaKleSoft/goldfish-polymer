@@ -1,0 +1,22 @@
+:host {
+    display: block;
+    margin: 8px;
+    background: #fff;
+    padding: 8px;
+    font-size: 14px;
+}
+
+img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+    margin-right: 8px;
+}
+
+.name {
+    font-weight: bold;
+}
+
+.subject {
+    color: #ccc;
+}

@@ -1,0 +1,17 @@
+<link rel="import" href="../../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../../bower_components/polymer-flex-layout/polymer-flex-layout.html">
+
+<polymer-element name="goldfish-inbox-item" attributes="thread" noscript>
+    <template>
+        <polymer-flex-layout align="center"></polymer-flex-layout>
+        <!-- STYLES -->
+        <link href="inbox-item.css" rel="stylesheet" type="text/css">
+        <template bind="{{ thread.recentEvent }}">
+            <img src="{{ fromIdentity.photoUrl }}">
+            <div flex>
+                <div class="name">{{ fromIdentity.name }}</div>
+                <div class="subject">{{ content || description }}</div>
+            </div>
+        </template>
+    </template>
+</polymer-element>
