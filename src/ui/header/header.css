@@ -1,0 +1,10 @@
+:host {
+    display: block;
+    height: 50px;
+    background: #27AAE2;
+    line-height: 50px;
+    text-align: center;
+    font-family: "ProximaNova-Regular";
+    color: #fff;
+    font-size: 23px;
+}
