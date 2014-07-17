@@ -7,13 +7,13 @@
         <!-- STYLES -->
         <link href="inbox.css" rel="stylesheet" type="text/css">
 
-        <core-ajax url="https://proofing.goldfishapp.co/app/rest/v2/threads"
+        <!-- <core-ajax url="https://proofing.goldfishapp.co/app/rest/v2/threads"
             auto
             id="request"
             handleAs="json"
             response="{{ inboxResponse }}"
             headers='{"Authorization":"1-6a9e01c3-5c3e-4e3a-baa6-b4056ae1fb5f"}'>
-        </core-ajax>
+        </core-ajax> -->
 
         <template repeat="{{ thread in inboxResponse.data }}">
             <goldfish-inbox-item thread="{{ thread }}"></goldfish-inbox-item>

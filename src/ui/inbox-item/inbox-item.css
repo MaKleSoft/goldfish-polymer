@@ -5,6 +5,7 @@
     padding: 8px;
     font-size: 12px;
     color: #333;
+    max-height: 95px;
 }
 
 .name {
@@ -17,6 +18,18 @@
 
 .preview {
     color: #bbb;
+    overflow: hidden;
+    position: relative;
+}
+
+.preview:after {
+    content: "...";
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 100px;
+    height: 1.5em;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1) 50%);
 }
 
 .person-image {
@@ -41,19 +54,26 @@
 }
 
 .person-wrapper {
-    text-align: center;
     margin: 5px 15px 0 5px;
 }
 
 .person-type {
-    display: inline-block;
     padding: 1px 5px;
     font-size: 11px;
     border-radius: 20px;
     background: #58595b;
     color: #fff;
     font-weight: bold;
-    margin-top: 3px;
+    margin: 3px 0;
+}
+
+.badges {
+    font-size: 0;
+}
+
+.badge-icon {
+    width: 25px;
+    height: 25px;
 }
 
 .customer {
