@@ -23,37 +23,11 @@
     width: 50px;
     height: 50px;
     border-radius: 50px;
-    margin-right: 8px;
     border: solid 3px #58595b;
-}
-
-.customer {
-    border-color: #27AAE2;
-}
-
-.lead {
-    border-color: #F99523;
-}
-
-.coworker {
-    border-color: #D5D5D7;
-}
-
-.personal {
-    border-color: #EE00AA;
-}
-
-.partner {
-    border-color: #38B349;
-}
-
-.system {
-    border-color: #333333;
 }
 
 .image-wrapper {
     position: relative;
-    margin-right: 5px;
 }
 
 .channel-icon {
@@ -63,5 +37,51 @@
     border: solid 2px #fff;
     position: absolute;
     bottom: 0;
-    right: 0;
+    right: -5px;
+}
+
+.person-wrapper {
+    text-align: center;
+    margin: 5px 15px 0 5px;
+}
+
+.person-type {
+    display: inline-block;
+    padding: 1px 5px;
+    font-size: 11px;
+    border-radius: 20px;
+    background: #58595b;
+    color: #fff;
+    font-weight: bold;
+    margin-top: 3px;
+}
+
+.customer {
+    border-color: #27AAE2;
+    background: #27AAE2;
+}
+
+.lead {
+    border-color: #F99523;
+    background: #F99523;
+}
+
+.coworker {
+    border-color: #D5D5D7;
+    background: #D5D5D7;
+}
+
+.personal {
+    border-color: #EE00AA;
+    background: #EE00AA;
+}
+
+.partner {
+    border-color: #38B349;
+    background: #38B349;
+}
+
+.system {
+    border-color: #333333;
+    background: #333333;
 }

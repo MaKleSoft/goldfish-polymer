@@ -7,9 +7,13 @@
         <!-- STYLES -->
         <link href="inbox-item.css" rel="stylesheet" type="text/css">
         <template bind="{{ thread.recentEvent }}">
-            <div class="image-wrapper">
-                <img src="{{ fromIdentity.photoUrl }}" class="person-image {{ fromIdentity.linkedTo.personType }}">
-                <img class="channel-icon" src="assets/icons/channels/connector-{{ channelName }}.svg">
+            <div class="person-wrapper">
+                <div class="image-wrapper">
+                    <img src="{{ fromIdentity.photoUrl }}" class="person-image {{ fromIdentity.linkedTo.personType }}">
+                    <img class="channel-icon" src="assets/icons/channels/connector-{{ channelName }}.svg">
+                </div>
+                <div class="person-type {{ fromIdentity.linkedTo.personType }}">
+                    {{ fromIdentity.linkedTo.personType }}</div>
             </div>
             <div flex>
                 <div class="name">{{ fromIdentity.name }}</div>
