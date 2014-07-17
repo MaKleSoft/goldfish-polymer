@@ -3,11 +3,14 @@
 
 <polymer-element name="goldfish-inbox-item" attributes="thread" noscript>
     <template>
-        <polymer-flex-layout></polymer-flex-layout>
+        <polymer-flex-layout align="center"></polymer-flex-layout>
         <!-- STYLES -->
         <link href="inbox-item.css" rel="stylesheet" type="text/css">
         <template bind="{{ thread.recentEvent }}">
-            <img src="{{ fromIdentity.photoUrl }}">
+            <div class="image-wrapper">
+                <img src="{{ fromIdentity.photoUrl }}" class="person-image {{ fromIdentity.linkedTo.personType }}">
+                <img class="channel-icon" src="assets/icons/channels/connector-{{ channelName }}.svg">
+            </div>
             <div flex>
                 <div class="name">{{ fromIdentity.name }}</div>
                 <div class="subject">{{ description }}</div>

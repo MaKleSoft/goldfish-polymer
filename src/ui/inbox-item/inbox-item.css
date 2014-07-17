@@ -7,13 +7,6 @@
     color: #333;
 }
 
-img {
-    width: 50px;
-    height: 50px;
-    border-radius: 50px;
-    margin-right: 8px;
-}
-
 .name {
     font-weight: 600;
 }
@@ -24,4 +17,51 @@ img {
 
 .preview {
     color: #bbb;
+}
+
+.person-image {
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+    margin-right: 8px;
+    border: solid 3px #58595b;
+}
+
+.customer {
+    border-color: #27AAE2;
+}
+
+.lead {
+    border-color: #F99523;
+}
+
+.coworker {
+    border-color: #D5D5D7;
+}
+
+.personal {
+    border-color: #EE00AA;
+}
+
+.partner {
+    border-color: #38B349;
+}
+
+.system {
+    border-color: #333333;
+}
+
+.image-wrapper {
+    position: relative;
+    margin-right: 5px;
+}
+
+.channel-icon {
+    width: 23px;
+    height: 23px;
+    border-radius: 23px;
+    border: solid 2px #fff;
+    position: absolute;
+    bottom: 0;
+    right: 0;
 }
