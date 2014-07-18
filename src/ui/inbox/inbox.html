@@ -15,8 +15,8 @@
             headers='{"Authorization":"1-6a9e01c3-5c3e-4e3a-baa6-b4056ae1fb5f"}'>
         </core-ajax> -->
 
-        <template repeat="{{ thread in inboxResponse.data }}">
-            <goldfish-inbox-item thread="{{ thread }}"></goldfish-inbox-item>
+        <template repeat="{{ item in items }}">
+            <goldfish-inbox-item thread="{{ item }}"></goldfish-inbox-item>
         </template>
     </template>
     <script src="inbox.js"></script>
