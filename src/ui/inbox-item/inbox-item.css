@@ -75,6 +75,7 @@
 .badge-icon {
     width: 25px;
     height: 25px;
+    fill: #888;
 }
 
 .time {

@@ -1,5 +1,7 @@
 <link rel="import" href="../../../bower_components/polymer/polymer.html">
 <link rel="import" href="../../../bower_components/polymer-flex-layout/polymer-flex-layout.html">
+<link rel="import" href="../../../bower_components/core-icon/core-icon.html">
+<link rel="import" href="../icons/badges.html">
 
 <polymer-element name="goldfish-inbox-item" attributes="thread" noscript>
     <template>
@@ -21,7 +23,7 @@
                 <div class="preview" flex>{{ content }}</div>
                 <div class="badges">
                     <template repeat="{{ fromIdentity.linkedTo.badges }}">
-                        <img class="badge-icon" src="assets/icons/badges/{{ badgeType }}.svg">
+                        <core-icon class="badge-icon" icon="badges:{{ badgeType }}"></core-icon>
                     </template>
                 </div>
             </polymer-flex-layout>
