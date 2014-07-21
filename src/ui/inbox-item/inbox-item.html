@@ -3,6 +3,7 @@
 <link rel="import" href="../../../bower_components/core-icon/core-icon.html">
 <link rel="import" href="../icons/goldfish.html">
 <link rel="import" href="../icons/badges.html">
+<link rel="import" href="../icons/channels.html">
 
 <polymer-element name="goldfish-inbox-item" attributes="thread" noscript>
     <template>
@@ -13,7 +14,7 @@
             <polymer-flex-layout isContainer vertical align="center" justify="center" class="person-wrapper">
                 <div class="image-wrapper">
                     <img src="{{ fromIdentity.photoUrl }}" class="person-image {{ fromIdentity.linkedTo.personType }}">
-                    <img class="channel-icon" src="assets/icons/channels/connector-{{ channelName }}.svg">
+                    <core-icon class="channel-icon" icon="channels:{{ channelName }}"></core-icon>
                 </div>
                 <div class="person-type {{ fromIdentity.linkedTo.personType }}">
                     {{ fromIdentity.linkedTo.personType }}</div>
