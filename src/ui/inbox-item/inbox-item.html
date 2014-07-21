@@ -1,6 +1,7 @@
 <link rel="import" href="../../../bower_components/polymer/polymer.html">
 <link rel="import" href="../../../bower_components/polymer-flex-layout/polymer-flex-layout.html">
 <link rel="import" href="../../../bower_components/core-icon/core-icon.html">
+<link rel="import" href="../icons/goldfish.html">
 <link rel="import" href="../icons/badges.html">
 
 <polymer-element name="goldfish-inbox-item" attributes="thread" noscript>
@@ -28,6 +29,9 @@
                 </div>
             </polymer-flex-layout>
         </template>
-        <div class="time">{{ thread.shortTime }}</div>
+        <div class="time">
+            <core-icon icon="goldfish:clock" size=""></core-icon>
+            {{ thread.shortTime }}
+        </div>
     </template>
 </polymer-element>

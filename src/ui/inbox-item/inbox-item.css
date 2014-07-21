@@ -82,17 +82,15 @@
     position: absolute;
     top: 8px;
     right: 8px;
+    color: #888;
+    fill: #888;
 }
 
-.time::before {
-    content: "";
-    display: inline-block;
+.time core-icon {
     width: 15px;
     height: 15px;
     vertical-align: middle;
-    background: url(../../../assets/icons/goldfish-icon-clock.svg) no-repeat center center;
-    background-size: contain;
-    margin: -2px 2px 0 0;
+    margin-top: -2px;
 }
 
 .customer {
