@@ -1,4 +1,4 @@
-window.InboxItem = (function() {
+(function() {
     function InboxItem() {
         Model.apply(this, arguments);
     }
@@ -31,5 +31,5 @@ window.InboxItem = (function() {
         }
     };
 
-    return InboxItem;
+    module.register("model.InboxItem", InboxItem);
 })();

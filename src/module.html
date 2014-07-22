@@ -1,6 +1,6 @@
 <link rel="import" href="../../../bower_components/polymer/polymer.html">
 
-<polymer-element name="core-module" constructor="CoreModule" attributes="name as">
+<polymer-element name="core-module" attributes="name as">
     <script>
         (function() {
             var modules = {};
@@ -16,12 +16,13 @@
 
                     host._ = host._ || {};
                     host._[handle] = module;
+                    this.fire("moduleready", {name: this.name, module: module, handle: handle});
                 }
             });
 
-            CoreModule.register = function(name, obj) {
+            window.module = {register: function(name, obj) {
                 modules[name] = obj;
-            };
+            }};
         })();
     </script>
 </polymer-element>

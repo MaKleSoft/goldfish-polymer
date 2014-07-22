@@ -1,9 +1,12 @@
 <link rel="import" href="../../../bower_components/polymer/polymer.html">
 <link rel="import" href="../../../bower_components/core-ajax/core-ajax.html">
 <link rel="import" href="../inbox-item/inbox-item.html">
+<link rel="import" href="../../module.html">
+<link rel="import" href="../../model/model.html">
 
-<polymer-element name="goldfish-inbox">
+<polymer-element name="goldfish-inbox" on-moduleready="moduleReady">
     <template>
+        <core-module name="model.InboxItem" as="InboxItem"></core-module>
         <!-- STYLES -->
         <link href="inbox.css" rel="stylesheet" type="text/css">
 
