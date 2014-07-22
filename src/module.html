@@ -1,0 +1,27 @@
+<link rel="import" href="../../../bower_components/polymer/polymer.html">
+
+<polymer-element name="core-module" constructor="CoreModule" attributes="name as">
+    <script>
+        (function() {
+            var modules = {};
+
+            Polymer("core-module", {
+                attached: function() {
+                    this.attachModule();
+                },
+                attachModule: function() { 
+                    var host = this.parentNode.host,
+                        module = modules[this.name] || null,
+                        handle = this.as || this.name;
+
+                    host._ = host._ || {};
+                    host._[handle] = module;
+                }
+            });
+
+            CoreModule.register = function(name, obj) {
+                modules[name] = obj;
+            };
+        })();
+    </script>
+</polymer-element>
