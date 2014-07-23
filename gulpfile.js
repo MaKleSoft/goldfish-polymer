@@ -10,6 +10,19 @@ var gulp = require("gulp"),
     path = require("path"),
     mkdirp = require("mkdirp");
 
+function compileLess() {
+    var deferred = Q.defer();
+
+    gulp.src("./src/**/*.less")
+        .pipe(less())
+        .pipe(gulp.dest("./src"))
+        .on("end", function() {
+            deferred.resolve();
+        });
+
+    return deferred.promise;
+}
+
 // Compile all less files in place
 gulp.task("less", function () {
     if (argv.watch) {
@@ -18,9 +31,7 @@ gulp.task("less", function () {
                 .pipe(gulp.dest("./src"));
         });
     } else {
-        gulp.src("./src/**/*.less")
-            .pipe(less())
-            .pipe(gulp.dest("./src"));
+        compileLess();
     }
 });
 
@@ -67,6 +78,10 @@ gulp.task("deploy", function() {
     .then(function() {
         console.log("Creating target folder...");
         return Q.nfcall(mkdirp, dest);
+    })
+    .then(function() {
+        console.log("Compiling less files...");
+        return compileLess();
     })
     .then(function() {
         console.log("Building source...");
