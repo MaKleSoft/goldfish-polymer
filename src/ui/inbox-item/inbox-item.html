@@ -5,7 +5,7 @@
 <link rel="import" href="../icons/badges.html">
 <link rel="import" href="../icons/channels.html">
 
-<polymer-element name="goldfish-inbox-item" attributes="thread" noscript>
+<polymer-element name="goldfish-inbox-item" attributes="thread" on-track="track" on-trackstart="trackStart" on-trackend="trackEnd">
     <template>
         <polymer-flex-layout align="stretch"></polymer-flex-layout>
         <!-- STYLES -->
@@ -32,7 +32,8 @@
         </template>
         <div class="time">
             <core-icon icon="goldfish:clock" size=""></core-icon>
-            {{ thread.shortTime }}
+            {{ thread.recentEvent.activityDate | shortTime }}
         </div>
     </template>
+    <script src="inbox-item.js"></script>
 </polymer-element>
