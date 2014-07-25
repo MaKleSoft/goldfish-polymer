@@ -5,34 +5,32 @@
 <link rel="import" href="../icons/badges.html">
 <link rel="import" href="../icons/channels.html">
 
-<polymer-element name="goldfish-inbox-item" attributes="thread" on-track="track" on-trackstart="trackStart" on-trackend="trackEnd">
+<polymer-element name="goldfish-inbox-item" attributes="item" on-track="track" on-trackstart="trackStart" on-trackend="trackEnd">
     <template>
         <polymer-flex-layout align="stretch"></polymer-flex-layout>
         <!-- STYLES -->
         <link href="inbox-item.css" rel="stylesheet" type="text/css">
-        <template bind="{{ thread.recentEvent }}">
-            <polymer-flex-layout isContainer vertical align="center" justify="center" class="person-wrapper">
-                <div class="image-wrapper">
-                    <img src="{{ fromIdentity.photoUrl }}" class="person-image {{ fromIdentity.linkedTo.personType }}">
-                    <core-icon class="channel-icon" icon="channels:{{ channelName }}"></core-icon>
-                </div>
-                <div class="person-type {{ fromIdentity.linkedTo.personType }}">
-                    {{ fromIdentity.linkedTo.personType }}</div>
-            </polymer-flex-layout>
-            <polymer-flex-layout isContainer vertical flex>
-                <div class="name">{{ fromIdentity.name }}</div>
-                <div class="subject">{{ description }}</div>
-                <div class="preview" flex>{{ content }}</div>
-                <div class="badges">
-                    <template repeat="{{ fromIdentity.linkedTo.badges }}">
-                        <core-icon class="badge-icon" icon="badges:{{ badgeType }}"></core-icon>
-                    </template>
-                </div>
-            </polymer-flex-layout>
-        </template>
+        <polymer-flex-layout isContainer vertical align="center" justify="center" class="person-wrapper">
+            <div class="image-wrapper">
+                <img src="{{ item.profileImage }}" class="person-image {{ item.thread.recentEvent.fromIdentity.linkedTo.personType }}">
+                <core-icon class="channel-icon" icon="channels:{{ item.channel }}"></core-icon>
+            </div>
+            <div class="person-type {{ item.thread.recentEvent.fromIdentity.linkedTo.personType }}">
+                {{ item.thread.recentEvent.fromIdentity.linkedTo.personType }}</div>
+        </polymer-flex-layout>
+        <polymer-flex-layout isContainer vertical flex>
+            <div class="title">{{ item.title }}</div>
+            <div class="subtitle">{{ item.subtitle }}</div>
+            <div class="text" flex>{{ item.text }}</div>
+            <div class="badges">
+                <template repeat="{{ item.thread.recentEvent.fromIdentity.linkedTo.badges }}">
+                    <core-icon class="badge-icon" icon="badges:{{ item.badgeType }}"></core-icon>
+                </template>
+            </div>
+        </polymer-flex-layout>
         <div class="time">
             <core-icon icon="goldfish:clock" size=""></core-icon>
-            {{ thread.recentEvent.activityDate | shortTime }}
+            {{ item.date | shortTime }}
         </div>
     </template>
     <script src="inbox-item.js"></script>

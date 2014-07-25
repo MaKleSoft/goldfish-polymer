@@ -1,22 +1,14 @@
 <link rel="import" href="../../../bower_components/polymer/polymer.html">
 <link rel="import" href="../../../bower_components/core-ajax/core-ajax.html">
 <link rel="import" href="../inbox-item/inbox-item.html">
+<link rel="import" href="../../api/api.html">
 
 <polymer-element name="goldfish-inbox">
     <template>
         <!-- STYLES -->
         <link href="inbox.css" rel="stylesheet" type="text/css">
-
-        <!-- <core-ajax url="https://proofing.goldfishapp.co/app/rest/v2/threads"
-            auto
-            id="request"
-            handleAs="json"
-            response="{{ inboxResponse }}"
-            headers='{"Authorization":"1-6a9e01c3-5c3e-4e3a-baa6-b4056ae1fb5f"}'>
-        </core-ajax> -->
-
-        <template repeat="{{ item in items }}">
-            <goldfish-inbox-item thread="{{ item }}"></goldfish-inbox-item>
+        <template repeat="{{ items }}">
+            <goldfish-inbox-item item="{{ }}"></goldfish-inbox-item>
         </template>
     </template>
     <script src="inbox.js"></script>
