@@ -2,13 +2,14 @@ var gulp = require("gulp"),
     less = require("gulp-less"),
     watch = require("gulp-watch"),
     argv = require("yargs").argv,
-    connect = require("connect"),
     vulcan = require("vulcanize"),
     Q = require("q"),
     rmdir = require("rimraf"),
     ncp = require("ncp").ncp,
     path = require("path"),
-    mkdirp = require("mkdirp");
+    mkdirp = require("mkdirp"),
+    st = require('st'),
+    http = require('http');
 
 function compileLess() {
     var deferred = Q.defer();
@@ -40,8 +41,8 @@ gulp.task("serve", function() {
     // The port can be specified via the --port flat
     // e.g. `gulp serve --port 8080
     var port = argv.port || 8000;
-    connect.createServer(
-        connect.static(__dirname)
+    http.createServer(
+        st(process.cwd())
     ).listen(port);
     console.log("Serving app on port " + port + ". If you want a different port use the --port flag.");
 });
