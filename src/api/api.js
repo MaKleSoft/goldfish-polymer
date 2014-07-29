@@ -1,8 +1,8 @@
 window.goldfish = window.goldfish || {};
 
 goldfish.api = (function() {
-    var baseUrl = "https://proofing.goldfishapp.co/app/rest/v2/",
-        apiKey = "173019-2eb263fc-35ae-42ca-9721-7869745c7720";
+    var baseUrl = "https://beta.goldfishapp.co/app/rest/v2/",
+        apiKey = "49545-a101b6dd-2fa6-4c50-8db2-044438a5165b";
 
     function objToUrl(obj) {
         return Object.keys(obj).map(function(key){
@@ -51,12 +51,36 @@ goldfish.api = (function() {
         return deferred.promise;
     }
 
+    /**
+     * Copies over all properties from the _source_ to the _target_. Properties
+     * will only be overwritten if _overwrite_ is true. Returns the _target_ object
+     */
+    function mixin(target, source, overwrite) {
+        for (var prop in source) {
+            if (source.hasOwnProperty(prop) && (overwrite || !target.hasOwnProperty(prop))) {
+                target[prop] = source[prop];
+            }
+        }
+        return target;
+    }
+
+    var store = {};
+
     var base = {
         path: "",
+        model: "",
+        pk: "id",
+        store: function(obj) {
+            var pk = obj[this.pk],
+                st = store[this.model] = store[this.model] || {},
+                o = st[pk] = st[pk] || {};
+
+            return mixin(o, obj, true);
+        },
         list: function(opts) {
             return request(this.path, "GET", opts).then(function(res) {
-                return res.data;
-            });
+                return res.data.map(this.store.bind(this));
+            }.bind(this));
         }
     };
 

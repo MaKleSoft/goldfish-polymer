@@ -1,7 +1,8 @@
-goldfish.api.threads = (function() {
-    var threads = Object.create(goldfish.api.base);
+goldfish.api.threads = (function(base) {
+    var threads = Object.create(base);
 
     threads.path = "threads";
+    threads.model = "thread";
 
     return threads;
-})();
+})(goldfish.api.base);

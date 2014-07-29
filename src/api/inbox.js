@@ -1,7 +1,8 @@
-goldfish.api.inbox = (function() {
-    var inbox = goldfish.api.base.list.bind({
-        path: "inbox"
-    });
+goldfish.api.inbox = (function(base) {
+    var inbox = Object.create(base);
+    inbox.path = "inbox";
+    inbox.model = "inbox";
+    inbox.pk = "date";
 
-    return inbox;
-})();
+    return inbox.list.bind(inbox);
+})(goldfish.api.base);
