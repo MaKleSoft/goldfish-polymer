@@ -70,10 +70,17 @@ goldfish.api = (function() {
         path: "",
         model: "",
         pk: "id",
+        related: {
+            // someProperty: goldfish.api.myapi
+        },
         store: function(obj) {
             var pk = obj[this.pk],
                 st = store[this.model] = store[this.model] || {},
                 o = st[pk] = st[pk] || {};
+
+            for (var prop in this.related) {
+                obj[prop] = this.related[prop].store(obj[prop]);
+            }
 
             return mixin(o, obj, true);
         },
