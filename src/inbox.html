@@ -1,0 +1,19 @@
+<link rel="import" href="service.html">
+<link rel="import" href="threads.html">
+
+<script>
+
+goldfish = window.goldfish || {};
+goldfish.inbox = (function(service, threads) {
+    var inbox = Object.create(service);
+    inbox.path = "inbox";
+    inbox.model = "inbox";
+    inbox.pk = "date";
+    inbox.related = {
+        thread: threads
+    };
+
+    return inbox.list.bind(inbox);
+})(goldfish.service, goldfish.threads);
+
+</script>

@@ -1,0 +1,58 @@
+<link rel="import" href="../lib/q/q.html">
+<link rel="import" href="util.html">
+
+<script>
+
+goldfish = window.goldfish || {};
+
+goldfish.ajax = (function(objToUrl) {
+    var baseUrl = "https://beta.goldfishapp.co/app/rest/v2/",
+        apiKey = "49545-a101b6dd-2fa6-4c50-8db2-044438a5165b";
+
+    function request(path, method, data) {
+        var url = baseUrl + path,
+            req = new XMLHttpRequest(),
+            deferred = Q.defer();
+
+        if (method === "GET" && data) {
+            url += "?" + objToUrl(data);
+            data = "";
+        }
+
+        function handleError(e) {
+            deferred.reject(e);
+            if (errorHandler) {
+                errorHandler(e);
+            }
+        }
+
+        req.onreadystatechange = function() {
+            if (req.readyState === 4) {
+                if (req.status === 200) {
+                    try {
+                        var res = JSON.parse(req.responseText);
+                        deferred.resolve(res);
+                    } catch(e) {
+                        deferred.reject(e);
+                    }
+                } else {
+                    deferred.reject(req);
+                }
+            }
+        }.bind(this);
+
+        req.open(method, url, true);
+        req.setRequestHeader("Content-Type", "application/json");
+        req.setRequestHeader("Accept", "application/json");
+        req.setRequestHeader("Authorization", apiKey);
+        req.send(JSON.stringify(data));
+
+        return deferred.promise;
+    }
+
+    return {
+        request: request
+    };
+})(goldfish.util.objToUrl);
+
+</script>

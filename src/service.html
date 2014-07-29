@@ -1,0 +1,40 @@
+<link rel="import" href="util.html">
+<link rel="import" href="ajax.html">
+
+<script>
+
+window.goldfish = window.goldfish || {};
+
+goldfish.service = (function(request, mixin) {
+    var store = {};
+
+    var service = {
+        path: "",
+        model: "",
+        pk: "id",
+        related: {
+            // someProperty: goldfish.api.myapi
+        },
+        store: function(obj) {
+            var pk = obj[this.pk],
+                st = store[this.model] = store[this.model] || {},
+                o = st[pk] = st[pk] || {};
+
+            for (var prop in this.related) {
+                obj[prop] = this.related[prop].store(obj[prop]);
+            }
+
+            return mixin(o, obj, true);
+        },
+        list: function(opts) {
+            return request(this.path, "GET", opts).then(function(res) {
+                return res.data.map(this.store.bind(this));
+            }.bind(this));
+        },
+        request: request
+    };
+
+    return service;
+})(goldfish.ajax.request, goldfish.util.mixin);
+
+</script>

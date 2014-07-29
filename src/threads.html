@@ -1,0 +1,15 @@
+<link rel="import" href="service.html">
+
+<script>
+
+goldfish = window.goldfish || {};
+goldfish.threads = (function(service) {
+    var threads = Object.create(service);
+
+    threads.path = "threads";
+    threads.model = "thread";
+
+    return threads;
+})(goldfish.service);
+
+</script>
