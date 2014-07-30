@@ -1,0 +1,26 @@
+<link rel="import" href="util.html">
+
+<script>
+
+goldfish = window.goldfish || {};
+goldfish.store = (function(mixin) {
+    var _store = {};
+
+    function store(service, obj) {
+        var pk = obj[service.pk],
+            st = _store[service.model] = _store[service.model] || {},
+            o = st[pk] = st[pk] || {};
+
+        for (var prop in service.related) {
+            obj[prop] = store(service.related[prop], obj[prop]);
+        }
+
+        return mixin(o, obj, true);
+    }
+
+    store.store = _store;
+
+    return store;
+})(goldfish.util.mixin);
+
+</script>

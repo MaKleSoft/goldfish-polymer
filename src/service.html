@@ -1,12 +1,11 @@
-<link rel="import" href="util.html">
+<link rel="import" href="store.html">
 <link rel="import" href="ajax.html">
 
 <script>
 
 window.goldfish = window.goldfish || {};
 
-goldfish.service = (function(request, mixin) {
-    var store = {};
+goldfish.service = (function(request, store) {
 
     var service = {
         path: "",
@@ -15,26 +14,16 @@ goldfish.service = (function(request, mixin) {
         related: {
             // someProperty: goldfish.api.myapi
         },
-        store: function(obj) {
-            var pk = obj[this.pk],
-                st = store[this.model] = store[this.model] || {},
-                o = st[pk] = st[pk] || {};
-
-            for (var prop in this.related) {
-                obj[prop] = this.related[prop].store(obj[prop]);
-            }
-
-            return mixin(o, obj, true);
-        },
         list: function(opts) {
             return request(this.path, "GET", opts).then(function(res) {
-                return res.data.map(this.store.bind(this));
+                return res.data.map(store.bind(null, this));
             }.bind(this));
         },
         request: request
     };
 
     return service;
-})(goldfish.ajax.request, goldfish.util.mixin);
+
+})(goldfish.ajax.request, goldfish.store);
 
 </script>
