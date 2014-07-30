@@ -4,6 +4,8 @@
 <script>
 
 goldfish.store = (function(mixin) {
+    "use strict";
+
     var _store = {};
 
     function store(service, obj) {
@@ -21,6 +23,7 @@ goldfish.store = (function(mixin) {
     store.store = _store;
 
     return store;
+    
 })(goldfish.util.mixin);
 
 </script>

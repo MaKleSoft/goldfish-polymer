@@ -1,4 +1,5 @@
-(function(inbox) {
+(function(Polymer, inbox) {
+"use strict";
 
 Polymer("goldfish-inbox", {
     ready: function() {
@@ -8,4 +9,4 @@ Polymer("goldfish-inbox", {
     }
 });
 
-})(goldfish.inbox);
+})(Polymer, goldfish.inbox);

@@ -5,6 +5,8 @@
 <script>
 
 goldfish.ajax = (function(objToUrl) {
+    "use strict";
+
     var baseUrl = "https://beta.goldfishapp.co/app/rest/v2/",
         apiKey = "49545-a101b6dd-2fa6-4c50-8db2-044438a5165b";
 
@@ -52,6 +54,7 @@ goldfish.ajax = (function(objToUrl) {
     return {
         request: request
     };
+    
 })(goldfish.util.objToUrl);
 
 </script>

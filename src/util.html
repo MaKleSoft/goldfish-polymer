@@ -3,6 +3,8 @@
 <script>
 
 goldfish.util = (function() {
+    "use strict";
+    
     /**
      * Copies over all properties from the _source_ to the _target_. Properties
      * will only be overwritten if _overwrite_ is true. Returns the _target_ object
@@ -26,6 +28,7 @@ goldfish.util = (function() {
         mixin: mixin,
         objToUrl: objToUrl
     };
+    
 })();
 
 </script>

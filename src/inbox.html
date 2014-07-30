@@ -5,6 +5,8 @@
 <script>
 
 goldfish.inbox = (function(service, threads) {
+    "use strict";
+
     var inbox = Object.create(service);
     inbox.path = "inbox";
     inbox.model = "inbox";
@@ -14,6 +16,7 @@ goldfish.inbox = (function(service, threads) {
     };
 
     return inbox.list.bind(inbox);
+    
 })(goldfish.service, goldfish.threads);
 
 </script>

@@ -4,12 +4,15 @@
 <script>
 
 goldfish.threads = (function(service) {
+    "use strict";
+
     var threads = Object.create(service);
 
     threads.path = "threads";
     threads.model = "thread";
 
     return threads;
+    
 })(goldfish.service);
 
 </script>

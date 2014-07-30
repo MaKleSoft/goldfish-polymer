@@ -1,3 +1,6 @@
+(function(Polymer) {
+"use strict";
+
 Polymer("goldfish-inbox-item", {
     shortTime: function(val) {
         var dt = new Date().getTime() - new Date(val),
@@ -23,3 +26,5 @@ Polymer("goldfish-inbox-item", {
         }
     }
 });
+
+})(Polymer);
