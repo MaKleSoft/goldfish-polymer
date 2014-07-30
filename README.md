@@ -21,10 +21,18 @@
     ```sh
     npm install
     sudo npm install -g gulp
+    sudo npm install -g bower
     ```
 
 This will download and install all dependencies defined in `package.json` as well as the gulp cli for running tasks.
 
+### Install Bower JS dependencies
+
+    ```sh
+    bower install
+    ```
+
+This will download and install all the front-end browser dependencies defined in `bower.json`.
 ---
 
 ## Run it
