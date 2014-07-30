@@ -8,12 +8,19 @@ goldfish.ajax = (function(objToUrl) {
     "use strict";
 
     var baseUrl = "https://beta.goldfishapp.co/app/rest/v2/",
-        apiKey = "49545-a101b6dd-2fa6-4c50-8db2-044438a5165b";
+        apiKey = "173019-2eb263fc-35ae-42ca-9721-7869745c7720",
+        expectedStatusCodes = {
+            "GET": 200,
+            "PUT": 200,
+            "DELETE": 204,
+            "POST": 201
+        };
 
     function request(path, method, data) {
         var url = baseUrl + path,
             req = new XMLHttpRequest(),
-            deferred = Q.defer();
+            deferred = Q.defer(),
+            expectedStatus = expectedStatusCodes[method];
 
         if (method === "GET" && data) {
             url += "?" + objToUrl(data);
@@ -29,9 +36,9 @@ goldfish.ajax = (function(objToUrl) {
 
         req.onreadystatechange = function() {
             if (req.readyState === 4) {
-                if (req.status === 200) {
+                if (req.status === expectedStatus) {
                     try {
-                        var res = JSON.parse(req.responseText);
+                        var res = req.responseText && JSON.parse(req.responseText);
                         deferred.resolve(res);
                     } catch(e) {
                         deferred.reject(e);
@@ -54,7 +61,7 @@ goldfish.ajax = (function(objToUrl) {
     return {
         request: request
     };
-    
+
 })(goldfish.util.objToUrl);
 
 </script>
