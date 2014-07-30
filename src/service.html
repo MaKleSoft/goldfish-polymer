@@ -14,18 +14,35 @@ goldfish.service = (function(request, store) {
         related: {
             // someProperty: goldfish.api.myapi
         },
+        getPath: function(obj) {
+            var id = obj[this.pk];
+            return this.path + "/" + id;
+        },
         list: function(opts) {
             return request(this.path, "GET", opts).then(function(res) {
                 return res.data.map(store.bind(null, this));
             }.bind(this));
         },
         load: function(opts) {
-            var id = opts[this.pk],
-                path = this.path + "/" + id;
+            var path = this.getPath(opts);
 
             return request(path, "GET").then(function(res) {
                 return store(this, res);
             }.bind(this));
+        },
+        save: function(opts) {
+            var path = this.getPath(opts);
+
+            // TODO: If the backend returns an updated object, also update the in-memory object just to be safe.
+            // Currently the backend retuns with a 204 and without any data, but we might want to change that
+            return request(path, "PUT", opts);
+        },
+        remove: function(opts) {
+            var path = this.getPath(opts);
+
+            // TODO: Do something with the in-memory object after the DELETE request was successful
+            // E.g. set a `removed: true` property so that lists can filter it out
+            return request(path, "DELETE");
         },
         request: request
     };
