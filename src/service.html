@@ -19,6 +19,14 @@ goldfish.service = (function(request, store) {
                 return res.data.map(store.bind(null, this));
             }.bind(this));
         },
+        load: function(opts) {
+            var id = opts[this.pk],
+                path = this.path + "/" + id;
+
+            return request(path, "GET").then(function(res) {
+                return store(this, res);
+            }.bind(this));
+        },
         request: request
     };
 
