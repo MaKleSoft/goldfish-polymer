@@ -1,3 +1,7 @@
+/* jshint globalstrict: true */
+/* global require, console, process */
+"use strict";
+
 var gulp = require("gulp"),
     less = require("gulp-less"),
     watch = require("gulp-watch"),
@@ -8,8 +12,10 @@ var gulp = require("gulp"),
     ncp = require("ncp").ncp,
     path = require("path"),
     mkdirp = require("mkdirp"),
-    st = require('st'),
-    http = require('http');
+    st = require("st"),
+    http = require("http"),
+    jshint = require("gulp-jshint"),
+    stylish = require("jshint-stylish");
 
 function compileLess() {
     var deferred = Q.defer();
@@ -96,4 +102,10 @@ gulp.task("deploy", function() {
         console.log("Done!");
         process.exit(1);
     });
+});
+
+gulp.task("lint", function() {
+    return gulp.src("src/**/*.js")
+        .pipe(jshint(".jshintrc"))
+        .pipe(jshint.reporter(stylish));
 });
